@@ -2,6 +2,7 @@
 
 #include <tamtypes.h>
 #include <kernel.h>
+#include <iopcontrol.h>
 #include <loadfile.h>
 #include <fileio.h>
 #include <sifrpc.h>
@@ -278,6 +279,13 @@ void WipeSpad() {
 }
 
 static
+void ResetIop(void) {
+  SifInitRpc(0); SifExitRpc();
+  while(!SifIopReset("", 0));
+  while(!SifIopSync());
+}
+
+static
 void MyLoadExecElf(const char *path) {
   t_ExecData ed;
   char *args[1] = {(char*)path};
@@ -302,10 +310,11 @@ void MyLoadExecElf(const char *path) {
 
 int main(int argc, char *argv[])
 {
-    GS_BGCOLOR = YELLOW;
-    MyLoadExecElf(WaitForCd());
-    Fatal();
-    return 0;
+  ResetIop();
+  GS_BGCOLOR = YELLOW;
+  MyLoadExecElf(WaitForCd());
+  Fatal();
+  return 0;
 }
 
 extern char _end[];
