@@ -1,0 +1,3 @@
+make -C images 
+make
+
