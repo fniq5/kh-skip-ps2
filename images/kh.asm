@@ -260,9 +260,23 @@ proc OnOpenSkipMenu
   sd ra, 0(sp)
   sd s0, 8(sp)
 
+  move t0, zero
+
+  lua at, wRoom
+  lw t1, wRoom(at)
+  lw t2, wWorld(at) 
+  li t3, 17
+  bne t3, t1, ok
+  li t3, 8
+  bne t3, t2, ok
+  nop
+  li t0, CUT_JENIE
+
+ok:
   lua at, wEventFlags
   lw s0, wEventFlags(at)
   lua at, wAllowSkip
+  sw t0, wCutId(at)
   jal LeaveSkip
   sw zero, wAllowSkip(at)
   lua at, wEventFlags
