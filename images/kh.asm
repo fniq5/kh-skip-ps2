@@ -932,6 +932,10 @@ SaveAnywhere:
   beq t0, s0, OpenSave
   li t0, 0xa80
   bne t0, s0, done
+  li a0, 2
+  li a1, 0x2d
+  jal StopSound
+  move a2, zero
   lua at, wContinueCommand
   jal SetContinue
   sw zero, wContinueCommand(at)
