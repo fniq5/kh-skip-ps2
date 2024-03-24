@@ -936,6 +936,9 @@ SaveAnywhere:
   li a1, 0x2d
   jal StopSound
   move a2, zero
+  lua at, (flAnimSpeed+4)
+  lui t0, 0x3f80
+  sw t0, flAnimSpeed+4(at)
   lua at, wContinueCommand
   jal SetContinue
   sw zero, wContinueCommand(at)
