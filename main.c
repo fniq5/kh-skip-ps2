@@ -209,7 +209,7 @@ u32 *FindImage(u32 Code) {
 
 static 
 int ps2LoadElf(const char *path, t_ExecData *out) {
-  return (!SifLoadElf(path, out)) && out->epc;
+  return ((!SifLoadElf(path, out)) && out->epc) ? 0 : -1;
 }
 
 static 
