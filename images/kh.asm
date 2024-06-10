@@ -904,6 +904,22 @@ NoExecute:
   addiu sp, sp, 0x10
 end proc 
 
+proc ControlSplashCommands
+  lua t2, wPlayedSplashes
+  lw t0, wPlayedSplashes(t2)
+  bnz t0, done
+  andi t0, a0, 8
+  bz t0, done
+  li t0, 1
+  sw t0, wPlayedSplashes(t2)
+  lua at, wPlaying
+  sw zero, wPlaying(at)
+
+done:
+  jr ra
+  nop
+end proc 
+
 proc DoButtonCommands
   addiu sp, sp, -0x10
   sd ra, 0(sp)
@@ -918,7 +934,7 @@ proc DoButtonCommands
   lw t1, wWorld(t1)
   bgez t1, SaveAnywhere
   andi t0, s0, 1
-  bz t0, SaveAnywhere
+  bz t0, CheckSplash
   lbu t0, bAutoSkip(at)
   xori t0, t0, 1
   sb t0, bAutoSkip(at)
@@ -926,6 +942,10 @@ proc DoButtonCommands
   sw t0, wSkipTimer(at)
   jal PlayGSound
   li a0, 1
+
+CheckSplash:
+  jal ControlSplashCommands
+  move a0, s0
 
 SaveAnywhere:
   li t0, 0x580

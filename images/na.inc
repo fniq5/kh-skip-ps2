@@ -17,6 +17,8 @@ label wDisableGameInput:4 at 0x2b7550
 label wOpenSave:4 at 0x2bb748
 label wMenuType:4 at 0x2b7558
 label hGrandHallPatch:2 at 0x1d22c0
+label wPlayedSplashes:4 at 0x2b6b7c
+label wPlaying:4 at 0x2b6248
 StopFMV = 0x110eb8 
 GetFmvStatus = 0x110df8
 SetContinue = 0x11c210

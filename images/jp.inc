@@ -13,6 +13,8 @@ label wDisableGameInput:4 at 0x2b9660
 
 label L_RenderSequence:4 at 0x10989c
 label wRenderVar:4 at 0x2b834c
+label wPlayedSplashes:4 at 0x2b8c8c
+label wPlaying:4 at 0x2b8350
 WaitForVBlanks = 0x1102c0
 L_CallWaitVBlanks = 0x10989c
 SwapBuffers = 0x105e10

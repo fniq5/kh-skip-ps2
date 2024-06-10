@@ -15,6 +15,9 @@ label wFlags:4 at 0x2c5958
 label wIsSkipMenuOpen:4 at 0x3f34a4
 label wSkipCursor:4 at 0x3f76b8
 label wRealTime:4 at 0x2bbdf4
+label wFmvMode:4 at 0x2bcae0
+label wPlayedSplashes:4 at 0x2bc73c
+label wPlaying:4 at 0x2bbe08
 SysTable = 0x3d9fe0
 Sys55 = 0x1cef80
 Sys8C = 0x1d07e0
@@ -54,3 +57,7 @@ GetTextFromId = 0x1efc10
 PlayGSound = 0x11d768
 L_EndSwapBuffers = 0x1063c0
 SendGsPacket = 0x106b18 
+SaveForContinue = 0x1d3e08
+SetPerf = 0x1220d0
+FmvCode1 = 0x111190
+DestroyFmv = 0x1111b0
