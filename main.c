@@ -15,10 +15,10 @@ DISABLE_PATCHED_FUNCTIONS();
 DISABLE_EXTRA_TIMERS_FUNCTIONS();
 PS2_DISABLE_AUTOSTART_PTHREAD();
 
-#define RED 0x1010feu
-#define GREEN 0x10fe10u
-#define BLUE 0xfe1010u
-#define YELLOW 0x10fefeu
+#define RED 0x1010c0u
+#define GREEN 0x10c010u
+#define BLUE 0xc0c010u
+#define YELLOW 0x10c0c0u
 
 #define ELF_MAGIC   0x464c457f
 #define ELF_PT_LOAD 1
